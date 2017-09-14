@@ -81,14 +81,18 @@ class ToDoListViewControllerTableViewController: UITableViewController {
             var item = toDoList[indexPath.row]
             if item.done == true{
                 item.done = false
-                cell?.accessoryType = .none
-                tableView.reloadRows(at: [indexPath], with: .automatic)
+                //cell?.accessoryType = .none
             }else{
                 item.done = true
+                //cell?.accessoryType = .checkmark
+            }
+            if cell?.accessoryType == UITableViewCellAccessoryType.none{
                 cell?.accessoryType = .checkmark
+            }else{
+                cell?.accessoryType = .none
             }
             
-            
+            //tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
     
