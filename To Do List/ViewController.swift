@@ -9,7 +9,24 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var toDoItem: ToDo?
+    
+    @IBOutlet weak var itemTextField: UITextField!
 
+    @IBAction func cancelToToDoViewController(_ segue: UIStoryboardSegue) {
+        self.performSegue(withIdentifier: "cancelToToDoViewController", sender: self)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+
+    
+    
+    @IBAction func dismissKeyboard(_ segue: UITapGestureRecognizer){
+        itemTextField.resignFirstResponder()
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,5 +38,10 @@ class ViewController: UIViewController {
     }
 
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "SaveToDoItem", let itemName = itemTextField.text{
+            toDoItem = ToDo(item: itemName, done: false)
+        }
+    }
 }
 
