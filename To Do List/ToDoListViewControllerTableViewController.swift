@@ -14,7 +14,11 @@ class ToDoListViewControllerTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        var view = UIImageView()
+        view.image = #imageLiteral(resourceName: "gradient")
+        tableView.backgroundView = view
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -81,14 +85,17 @@ class ToDoListViewControllerTableViewController: UITableViewController {
             var item = toDoList[indexPath.row]
             if item.done == true{
                 item.done = false
+                
                 //cell?.accessoryType = .none
             }else{
                 item.done = true
                 //cell?.accessoryType = .checkmark
             }
             if cell?.accessoryType == UITableViewCellAccessoryType.none{
+                cell?.textLabel?.textColor = .red;
                 cell?.accessoryType = .checkmark
             }else{
+                cell?.textLabel?.textColor = .black;
                 cell?.accessoryType = .none
             }
             
